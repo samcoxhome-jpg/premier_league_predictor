@@ -1,0 +1,3 @@
+# Premier League Predictor
+
+Streamlit app that predicts who's going to win the Premier League. It pulls the latest results and fixtures from the Fantasy Premier League API, uses a Poisson regression model (trained on every Prem season since 2000) to predict the score of each remaining game, then simulates the rest of the season 5000 times to get each team's chance of winning the title. It also flags when a team has mathematically won the league, qualified for Europe or been relegated, and you can click on any team to see their best/worst possible finish and win/draw/loss odds for each of their remaining games. To run it, `pip install -r requirements.txt` then `streamlit run app.py`.

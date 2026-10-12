@@ -1,0 +1,7 @@
+streamlit>=1.40
+pandas>=2.0
+numpy>=1.26
+requests>=2.31
+# The saved models in models/ were created with this version.
+# A different version may fail to load them.
+scikit-learn==1.9.1
