@@ -7,11 +7,11 @@ from src.simulator import fetch_raw_league_data, get_probabilities
 CACHE_TTL_SECONDS = 60 * 60 * 24
 
 
-@st.cache_data(ttl=CACHE_TTL_SECONDS, persist="disk")
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def load_raw_league_data(league_code):
     return fetch_raw_league_data(league_code)
 
 
-@st.cache_data(ttl=CACHE_TTL_SECONDS, persist="disk")
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def load_probabilities(current_stats, remaining_fixtures, league_code):
     return get_probabilities(current_stats, remaining_fixtures, league_code)
