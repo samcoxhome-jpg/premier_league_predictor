@@ -23,7 +23,7 @@ def ordinal(n):
 st.set_page_config(page_title="Team Details")
 
 #Hides Streamlit's automatic page-list sidebar as we only ever have 1 page in operation so looked redundant 
-st.markdown("<style>[data-testid='stSidebarNav'] { display: none; }</style>", unsafe_allow_html=True)
+st.markdown("<style>[data-testid='stSidebar'], [data-testid='stSidebarCollapsedControl'] { display: none; }</style>", unsafe_allow_html=True)
 
 #Get selected team and league from the URL
 team_name = st.query_params.get("name")
@@ -120,7 +120,7 @@ else:
         else:
             probability_win, probability_loss = probability_away, probability_home
 
-        st.markdown(f"{date} -- vs {opponent} {venue}")
+        st.markdown(f"{date} - vs {opponent} {venue}")
         #Show the 3 probabilties, chop off decimals, just looks nicer
         col_w, col_d, col_l = st.columns(3)
         col_w.metric("Win", f"{probability_win*100:.0f}%")

@@ -33,8 +33,8 @@ LEAGUE_NAME = "Premier League"
 
 st.set_page_config(page_title="Premier League Title Predictor")
 
-#Hides Streamlit's automatic page list sidebar, the links still work
-st.markdown("<style>[data-testid='stSidebarNav'] { display: none; }</style>", unsafe_allow_html=True)
+#Hides the sidebar as its empty, the links still work
+st.markdown("<style>[data-testid='stSidebar'], [data-testid='stSidebarCollapsedControl'] { display: none; }</style>", unsafe_allow_html=True)
 
 st.title("Premier League Title Predictor")
 
@@ -125,24 +125,24 @@ for team, prob in results:
 
     if has_won_league(team, current_stats, remaining_fixtures):
         icon_html = f'<img src="{TROPHY}" style="height: 18px; vertical-align: middle; margin-right: 6px;">'
-        row_style = 'style="background-color: #8a6a00;"'
+        row_style = 'style="background-color: #fbefc9;"'
     elif is_relegated(team, LEAGUE_CODE, current_stats, remaining_fixtures):
         icon_html = f'<img src="{DOWN_ARROW}" style="height: 18px; vertical-align: middle; margin-right: 6px;">'
-        row_style = 'style="background-color: #5a1a1a;"'
+        row_style = 'style="background-color: #fbe3e3;"'
     else:
         tier = get_locked_continental_tier(team, LEAGUE_CODE, current_stats, remaining_fixtures)
         if tier == 1:
             icon_html = f'<img src="{TICK_TIER_1}" style="height: 18px; vertical-align: middle; margin-right: 6px;">'
-            row_style = 'style="background-color: #422bd6;"'   # dark blue
+            row_style = 'style="background-color: #e2f2dc;"'   # light green
         elif tier == 2:
             icon_html = f'<img src="{TICK_TIER_2}" style="height: 18px; vertical-align: middle; margin-right: 6px;">'
-            row_style = 'style="background-color: #e0732b;"'   # orange
+            row_style = 'style="background-color: #fde6d3;"'   # light orange
         elif tier == 3:
             icon_html = f'<img src="{TICK_TIER_3}" style="height: 18px; vertical-align: middle; margin-right: 6px;">'
-            row_style = 'style="background-color: #64b360;"'   # green
+            row_style = 'style="background-color: #e3e8fb;"'   # light blue
 
     #Make the unique link for each team, including any status icon
-    team_link = f'<a href="/team?name={encoded_name}&league={LEAGUE_CODE}" target="_self">{icon_html}{team}</a>'
+    team_link = f'<a href="/team?name={encoded_name}&league={LEAGUE_CODE}" target="_self" style="color: inherit; text-decoration: none;">{icon_html}{team}</a>'
 
     rows_html += f"<tr {row_style}><td>{team_link}</td><td>{prob_display}</td></tr>"
 
